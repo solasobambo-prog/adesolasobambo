@@ -43,22 +43,18 @@ function Header() {
           >
             Case Studies
           </Link>
-          <Link
-            to="/how-i-work"
-            activeProps={{ className: "text-foreground" }}
-            inactiveProps={{ className: "text-foreground/70" }}
-            className="transition-colors hover:text-foreground"
+          <a
+            href="/how-i-work"
+            className="text-foreground/70 transition-colors hover:text-foreground"
           >
             How I Work
-          </Link>
-          <Link
-            to="/contact"
-            activeProps={{ className: "text-foreground" }}
-            inactiveProps={{ className: "text-foreground/70" }}
-            className="transition-colors hover:text-foreground"
+          </a>
+          <a
+            href="/contact"
+            className="text-foreground/70 transition-colors hover:text-foreground"
           >
             Contact
-          </Link>
+          </a>
         </nav>
       </div>
     </header>
