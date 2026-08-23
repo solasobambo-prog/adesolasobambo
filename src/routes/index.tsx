@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,15 +24,51 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-background px-6 py-16">
-      <div className="w-full max-w-xl text-center">
-        <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-5xl">
-          Adesola Sobambo
-        </h1>
-        <p className="mt-4 text-base text-muted-foreground sm:text-lg">
-          Business Intelligence / Data Analyst
-        </p>
-      </div>
-    </main>
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Section 1 — Navigation bar */}
+      <header className="sticky top-0 z-50 border-b border-border/30 bg-background/90 backdrop-blur">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+          <Link
+            to="/"
+            className="font-display text-lg font-bold tracking-wide text-foreground transition-colors hover:text-brand-accent"
+          >
+            Adesola Sobambo
+          </Link>
+          <nav className="hidden items-center gap-6 text-sm sm:flex">
+            <Link
+              to="/"
+              activeProps={{ className: "text-foreground" }}
+              inactiveProps={{ className: "text-foreground/70" }}
+              activeOptions={{ exact: true }}
+              className="transition-colors hover:text-foreground"
+            >
+              Home
+            </Link>
+            <a
+              href="/case-studies"
+              className="text-foreground/70 transition-colors hover:text-foreground"
+            >
+              Case Studies
+            </a>
+            <a
+              href="/how-i-work"
+              className="text-foreground/70 transition-colors hover:text-foreground"
+            >
+              How I Work
+            </a>
+            <a
+              href="/contact"
+              className="text-foreground/70 transition-colors hover:text-foreground"
+            >
+              Contact
+            </a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        {/* Hero, services, proof, and CTA sections will be added here next. */}
+      </main>
+    </div>
   );
 }
