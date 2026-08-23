@@ -79,6 +79,16 @@ function Index() {
           </div>
         </section>
 
+        {/* Section 3 — Service line */}
+        <section className="py-10 px-6">
+          <div className="mx-auto max-w-5xl text-center">
+            <p className="font-display text-sm font-medium tracking-[0.15em] text-muted-foreground sm:text-base">
+              Excel · Power BI · Data Cleaning · KPI Dashboards
+            </p>
+          </div>
+        </section>
+
+
       </main>
     </div>
   );
