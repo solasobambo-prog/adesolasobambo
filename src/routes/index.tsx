@@ -88,6 +88,39 @@ function Index() {
           </div>
         </section>
 
+        {/* Section 4 — Proof snapshots */}
+        <section className="section-padding">
+          <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <article className="rounded-lg border border-border/30 bg-card p-6 text-card-foreground shadow-sm">
+              <h3 className="font-display text-xl font-bold text-brand-text">
+                26.5% churn diagnosed
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed">
+                Internship analysis of a telecom dataset identified the exact contract, service, and payment patterns driving customer loss, and delivered 5 recommendations a telecom business could evaluate and test.
+              </p>
+            </article>
+
+            <article className="rounded-lg border border-border/30 bg-card p-6 text-card-foreground shadow-sm">
+              <h3 className="font-display text-xl font-bold text-brand-text">
+                $2.3M in sales made visible
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed">
+                Built a fully interactive Power BI dashboard giving management real-time visibility into sales, profit, and regional performance across a 4-year retail dataset.
+              </p>
+            </article>
+
+            <article className="rounded-lg border border-border/30 bg-card p-6 text-card-foreground shadow-sm">
+              <h3 className="font-display text-xl font-bold text-brand-text">
+                Every number verified
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed">
+                No AI-invented figures. Every formula, chart, and insight is checked against the source data to guarantee absolute accuracy.
+              </p>
+            </article>
+          </div>
+        </section>
+
+
 
       </main>
     </div>
