@@ -6,11 +6,64 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  useRouterState,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+
+function Header() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-border/30 bg-background/90 backdrop-blur">
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+        <Link
+          to="/"
+          className="font-display text-lg font-bold tracking-wide text-foreground transition-colors hover:text-brand-accent"
+        >
+          Adesola Sobambo
+        </Link>
+        <nav className="hidden items-center gap-6 text-sm sm:flex">
+          <Link
+            to="/"
+            activeProps={{ className: "text-foreground" }}
+            inactiveProps={{ className: "text-foreground/70" }}
+            activeOptions={{ exact: true }}
+            className="transition-colors hover:text-foreground"
+          >
+            Home
+          </Link>
+          <Link
+            to="/case-studies"
+            activeProps={{ className: "text-foreground" }}
+            inactiveProps={{ className: "text-foreground/70" }}
+            className="transition-colors hover:text-foreground"
+          >
+            Case Studies
+          </Link>
+          <Link
+            to="/how-i-work"
+            activeProps={{ className: "text-foreground" }}
+            inactiveProps={{ className: "text-foreground/70" }}
+            className="transition-colors hover:text-foreground"
+          >
+            How I Work
+          </Link>
+          <Link
+            to="/contact"
+            activeProps={{ className: "text-foreground" }}
+            inactiveProps={{ className: "text-foreground/70" }}
+            className="transition-colors hover:text-foreground"
+          >
+            Contact
+          </Link>
+        </nav>
+      </div>
+    </header>
+  );
+}
 
 function NotFoundComponent() {
   return (
@@ -131,6 +184,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <Header />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>
