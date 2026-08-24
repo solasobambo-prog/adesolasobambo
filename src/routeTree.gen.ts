@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CaseStudiesRouteImport } from './routes/case-studies'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as HowIWorkRouteImport } from './routes/how-i-work'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,6 +24,11 @@ const CaseStudiesRoute = CaseStudiesRouteImport.update({
   path: '/case-studies',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HowIWorkRoute = HowIWorkRouteImport.update({
   id: '/how-i-work',
   path: '/how-i-work',
@@ -32,30 +38,34 @@ const HowIWorkRoute = HowIWorkRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/case-studies': typeof CaseStudiesRoute
+  '/contact': typeof ContactRoute
   '/how-i-work': typeof HowIWorkRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/case-studies': typeof CaseStudiesRoute
+  '/contact': typeof ContactRoute
   '/how-i-work': typeof HowIWorkRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/case-studies': typeof CaseStudiesRoute
+  '/contact': typeof ContactRoute
   '/how-i-work': typeof HowIWorkRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/case-studies' | '/how-i-work'
+  fullPaths: '/' | '/case-studies' | '/contact' | '/how-i-work'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/case-studies' | '/how-i-work'
-  id: '__root__' | '/' | '/case-studies' | '/how-i-work'
+  to: '/' | '/case-studies' | '/contact' | '/how-i-work'
+  id: '__root__' | '/' | '/case-studies' | '/contact' | '/how-i-work'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CaseStudiesRoute: typeof CaseStudiesRoute
+  ContactRoute: typeof ContactRoute
   HowIWorkRoute: typeof HowIWorkRoute
 }
 
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CaseStudiesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/how-i-work': {
       id: '/how-i-work'
       path: '/how-i-work'
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CaseStudiesRoute: CaseStudiesRoute,
+  ContactRoute: ContactRoute,
   HowIWorkRoute: HowIWorkRoute,
 }
 export const routeTree = rootRouteImport

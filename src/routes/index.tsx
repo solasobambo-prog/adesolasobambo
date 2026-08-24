@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -82,12 +82,12 @@ function Index() {
         {/* Section 5 — CTA */}
         <section className="section-padding text-center">
           <div className="mx-auto max-w-3xl">
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-4 font-display text-base font-bold text-primary-foreground transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
             >
               Contact me to discuss your data analytics project
-            </a>
+            </Link>
           </div>
         </section>
 

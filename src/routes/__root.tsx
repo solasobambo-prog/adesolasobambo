@@ -48,12 +48,14 @@ function Header() {
           >
             How I Work
           </Link>
-          <a
-            href="/contact"
-            className="text-foreground/70 transition-colors hover:text-foreground"
+          <Link
+            to="/contact"
+            activeProps={{ className: "text-foreground" }}
+            inactiveProps={{ className: "text-foreground/70" }}
+            className="transition-colors hover:text-foreground"
           >
             Contact
-          </a>
+          </Link>
         </nav>
       </div>
     </header>
