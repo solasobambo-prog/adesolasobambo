@@ -40,12 +40,14 @@ function Header() {
           >
             Case Studies
           </Link>
-          <a
-            href="/how-i-work"
-            className="text-foreground/70 transition-colors hover:text-foreground"
+          <Link
+            to="/how-i-work"
+            activeProps={{ className: "text-foreground" }}
+            inactiveProps={{ className: "text-foreground/70" }}
+            className="transition-colors hover:text-foreground"
           >
             How I Work
-          </a>
+          </Link>
           <a
             href="/contact"
             className="text-foreground/70 transition-colors hover:text-foreground"
