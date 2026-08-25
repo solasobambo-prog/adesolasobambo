@@ -1,4 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+
+import superstoreImage1 from "@/assets/superstore-image1.jpg.asset.json";
+import superstoreImage2 from "@/assets/superstore-image2.jpg.asset.json";
+import churnImage1 from "@/assets/churn-image1.jpg.asset.json";
+import churnImage2 from "@/assets/churn-image2.jpg.asset.json";
 
 export const Route = createFileRoute("/case-studies")({
   head: () => ({
@@ -86,6 +91,22 @@ function CaseStudiesPage() {
                   </p>
                 </div>
 
+                <figure className="space-y-4">
+                  <img
+                    src={superstoreImage1.url}
+                    alt="Superstore Power BI sales page: KPI cards for $2.30M total sales, $229.86 average sales and 5,009 total orders, plus top five products, sales by state map, sales by segment, category and region, and a monthly sales trend line."
+                    loading="lazy"
+                    className="w-full rounded-lg border border-border/30 bg-brand-contrast"
+                  />
+                  <img
+                    src={superstoreImage2.url}
+                    alt="Superstore Power BI profit page: 12.47% profit margin and $286.40K total profit cards, top five products by profit, year, category and region slicers, profit by state map, profit by segment, region and category charts, and a monthly profit trend line."
+                    loading="lazy"
+                    className="w-full rounded-lg border border-border/30 bg-brand-contrast"
+                  />
+                </figure>
+
+
                 <div>
                   <h3 className="font-display text-lg font-semibold text-brand-text">What I found</h3>
                   <ul className="mt-3 list-disc space-y-2 pl-5 leading-relaxed">
@@ -161,6 +182,22 @@ function CaseStudiesPage() {
                   Cleaned and inspected a 7,000+ row customer dataset, then built out a full churn analysis — contract type, service type, payment method, tenure, and billing all cross-examined against churn rate.
                 </p>
               </div>
+
+              <figure className="space-y-4">
+                <img
+                  src={churnImage1.url}
+                  alt="Customer churn analysis dashboard page one: KPI cards showing 7,043 total customers, 1,869 churned, a 26.5% churn rate, 18-month average churn tenure and 5,174 retained customers, with bar charts on internet service type, payment method and a monthly charges distribution."
+                  loading="lazy"
+                  className="w-full rounded-lg border border-border/30 bg-brand-contrast"
+                />
+                <img
+                  src={churnImage2.url}
+                  alt="Customer churn analysis dashboard page two: contract-type churn bars, an overall churn pie chart, a monthly charges by churn box plot, a month-to-month contract share pie, a tenure distribution histogram and a correlation heatmap."
+                  loading="lazy"
+                  className="w-full rounded-lg border border-border/30 bg-brand-contrast"
+                />
+              </figure>
+
 
               <div>
                 <h3 className="font-display text-lg font-semibold text-brand-text">What I found</h3>

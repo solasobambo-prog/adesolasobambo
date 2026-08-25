@@ -7,57 +7,81 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { Menu, X } from "lucide-react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
+const NAV_ITEMS = [
+  { to: "/", label: "Home", exact: true },
+  { to: "/case-studies", label: "Case Studies", exact: false },
+  { to: "/how-i-work", label: "How I Work", exact: false },
+  { to: "/contact", label: "Contact", exact: false },
+] as const;
+
 function Header() {
+  const [open, setOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-50 border-b border-border/30 bg-background/90 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         <Link
           to="/"
+          onClick={() => setOpen(false)}
           className="font-display text-lg font-bold tracking-wide text-foreground transition-colors hover:text-brand-accent"
         >
           Adesola Sobambo
         </Link>
         <nav className="hidden items-center gap-6 text-sm sm:flex">
-          <Link
-            to="/"
-            activeProps={{ className: "text-foreground" }}
-            inactiveProps={{ className: "text-foreground/70" }}
-            activeOptions={{ exact: true }}
-            className="transition-colors hover:text-foreground"
-          >
-            Home
-          </Link>
-          <Link
-            to="/case-studies"
-            activeProps={{ className: "text-foreground" }}
-            inactiveProps={{ className: "text-foreground/70" }}
-            className="transition-colors hover:text-foreground"
-          >
-            Case Studies
-          </Link>
-          <Link
-            to="/how-i-work"
-            activeProps={{ className: "text-foreground" }}
-            inactiveProps={{ className: "text-foreground/70" }}
-            className="transition-colors hover:text-foreground"
-          >
-            How I Work
-          </Link>
-          <Link
-            to="/contact"
-            activeProps={{ className: "text-foreground" }}
-            inactiveProps={{ className: "text-foreground/70" }}
-            className="transition-colors hover:text-foreground"
-          >
-            Contact
-          </Link>
+          {NAV_ITEMS.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              activeProps={{ className: "text-foreground" }}
+              inactiveProps={{ className: "text-foreground/70" }}
+              activeOptions={{ exact: item.exact }}
+              className="transition-colors hover:text-foreground"
+            >
+              {item.label}
+            </Link>
+          ))}
         </nav>
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls="mobile-nav"
+          aria-label={open ? "Close menu" : "Open menu"}
+          className="inline-flex items-center justify-center rounded-md border border-border/40 p-2 text-foreground transition-colors hover:bg-accent/10 sm:hidden"
+        >
+          {open ? <X size={20} /> : <Menu size={20} />}
+        </button>
       </div>
+
+      {open ? (
+        <nav
+          id="mobile-nav"
+          className="border-t border-border/30 bg-background/95 px-6 py-3 sm:hidden"
+        >
+          <ul className="flex flex-col">
+            {NAV_ITEMS.map((item) => (
+              <li key={item.to}>
+                <Link
+                  to={item.to}
+                  onClick={() => setOpen(false)}
+                  activeProps={{ className: "text-foreground" }}
+                  inactiveProps={{ className: "text-foreground/70" }}
+                  activeOptions={{ exact: item.exact }}
+                  className="block py-3 text-sm transition-colors hover:text-foreground"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ) : null}
     </header>
   );
 }
