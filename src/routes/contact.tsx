@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -22,7 +23,65 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
+const INITIAL_FORM = {
+  name: "",
+  email: "",
+  company: "",
+  project: "",
+  budget: "",
+};
+
 function ContactPage() {
+  const [formData, setFormData] = useState(INITIAL_FORM);
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("loading");
+    setMessage("");
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/solasobambo@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          _subject: "New portfolio contact inquiry",
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          project: formData.project,
+          budget: formData.budget,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`FormSubmit responded with status ${response.status}`);
+      }
+
+      setFormData(INITIAL_FORM);
+      setStatus("success");
+      setMessage(
+        "Thanks for reaching out. I'll get back to you within 24–48 hours. Your information is only used to respond to your inquiry."
+      );
+    } catch (error) {
+      setStatus("error");
+      setMessage(
+        "Something went wrong. Please try again or email me directly at solasobambo@gmail.com."
+      );
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <main className="mx-auto max-w-5xl px-6 py-12 sm:py-16">
@@ -44,7 +103,7 @@ function ContactPage() {
         <section className="mb-12 sm:mb-16">
           <div className="mx-auto max-w-2xl rounded-xl border border-border/30 bg-card p-6 text-card-foreground shadow-sm sm:p-8">
             <form
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleSubmit}
               className="space-y-5"
             >
               <div>
@@ -56,6 +115,8 @@ function ContactPage() {
                   name="name"
                   type="text"
                   required
+                  value={formData.name}
+                  onChange={handleChange}
                   className="mt-2 block w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
                   placeholder="Your name"
                 />
@@ -70,6 +131,8 @@ function ContactPage() {
                   name="email"
                   type="email"
                   required
+                  value={formData.email}
+                  onChange={handleChange}
                   className="mt-2 block w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
                   placeholder="you@example.com"
                 />
@@ -83,6 +146,8 @@ function ContactPage() {
                   id="company"
                   name="company"
                   type="text"
+                  value={formData.company}
+                  onChange={handleChange}
                   className="mt-2 block w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
                   placeholder="Your company or organisation"
                 />
@@ -97,6 +162,8 @@ function ContactPage() {
                   name="project"
                   rows={4}
                   required
+                  value={formData.project}
+                  onChange={handleChange}
                   className="mt-2 block w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
                   placeholder="Describe your project, challenge, or goal..."
                 />
@@ -110,16 +177,35 @@ function ContactPage() {
                   id="budget"
                   name="budget"
                   type="text"
+                  value={formData.budget}
+                  onChange={handleChange}
                   className="mt-2 block w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
                   placeholder="e.g., £500–£1,000, within 2 weeks"
                 />
               </div>
 
+              {message && (
+                <div
+                  className={`rounded-md border p-4 text-sm ${
+                    status === "success"
+                      ? "border-[#93D1CE]/30 bg-[#93D1CE]/10 text-[#0B0B0B]"
+                      : "border-red-400/30 bg-red-400/10 text-red-900"
+                  }`}
+                  role="status"
+                  aria-live="polite"
+                >
+                  {message}
+                </div>
+              )}
+
               <button
                 type="submit"
-                className="inline-flex w-full items-center justify-center rounded-md bg-primary px-6 py-3 font-display text-sm font-bold text-primary-foreground transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
+                disabled={status === "loading"}
+                className="inline-flex w-full items-center justify-center rounded-md bg-primary px-6 py-3 font-display text-sm font-bold text-primary-foreground transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background disabled:cursor-not-allowed disabled:opacity-60"
               >
-                Contact me to discuss your data analytics project
+                {status === "loading"
+                  ? "Sending..."
+                  : "Contact me to discuss your data analytics project"}
               </button>
             </form>
           </div>
