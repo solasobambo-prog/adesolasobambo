@@ -15,9 +15,9 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 
 const NAV_ITEMS = [
   { to: "/", label: "Home", exact: true },
-  { to: "/case-studies", label: "Case Studies" },
-  { to: "/how-i-work", label: "How I Work" },
-  { to: "/contact", label: "Contact" },
+  { to: "/case-studies", label: "Case Studies", exact: false },
+  { to: "/how-i-work", label: "How I Work", exact: false },
+  { to: "/contact", label: "Contact", exact: false },
 ] as const;
 
 function Header() {
@@ -40,7 +40,7 @@ function Header() {
               to={item.to}
               activeProps={{ className: "text-foreground" }}
               inactiveProps={{ className: "text-foreground/70" }}
-              activeOptions={item.exact ? { exact: true } : undefined}
+              activeOptions={{ exact: item.exact }}
               className="transition-colors hover:text-foreground"
             >
               {item.label}
@@ -55,7 +55,6 @@ function Header() {
           aria-label={open ? "Close menu" : "Open menu"}
           className="inline-flex items-center justify-center rounded-md border border-border/40 p-2 text-foreground transition-colors hover:bg-accent/10 sm:hidden"
         >
-          {open ? <Menu size={20} className="hidden" /> : null}
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
@@ -73,7 +72,7 @@ function Header() {
                   onClick={() => setOpen(false)}
                   activeProps={{ className: "text-foreground" }}
                   inactiveProps={{ className: "text-foreground/70" }}
-                  activeOptions={item.exact ? { exact: true } : undefined}
+                  activeOptions={{ exact: item.exact }}
                   className="block py-3 text-sm transition-colors hover:text-foreground"
                 >
                   {item.label}
