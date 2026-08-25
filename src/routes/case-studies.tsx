@@ -1,4 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+
+import superstoreImage1 from "@/assets/superstore-image1.jpg.asset.json";
+import superstoreImage2 from "@/assets/superstore-image2.jpg.asset.json";
+import churnImage1 from "@/assets/churn-image1.jpg.asset.json";
+import churnImage2 from "@/assets/churn-image2.jpg.asset.json";
 
 export const Route = createFileRoute("/case-studies")({
   head: () => ({
