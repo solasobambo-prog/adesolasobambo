@@ -91,6 +91,22 @@ function CaseStudiesPage() {
                   </p>
                 </div>
 
+                <figure className="space-y-4">
+                  <img
+                    src={superstoreImage1.url}
+                    alt="Superstore Power BI sales page: KPI cards for $2.30M total sales, $229.86 average sales and 5,009 total orders, plus top five products, sales by state map, sales by segment, category and region, and a monthly sales trend line."
+                    loading="lazy"
+                    className="w-full rounded-lg border border-border/30 bg-brand-contrast"
+                  />
+                  <img
+                    src={superstoreImage2.url}
+                    alt="Superstore Power BI profit page: 12.47% profit margin and $286.40K total profit cards, top five products by profit, year, category and region slicers, profit by state map, profit by segment, region and category charts, and a monthly profit trend line."
+                    loading="lazy"
+                    className="w-full rounded-lg border border-border/30 bg-brand-contrast"
+                  />
+                </figure>
+
+
                 <div>
                   <h3 className="font-display text-lg font-semibold text-brand-text">What I found</h3>
                   <ul className="mt-3 list-disc space-y-2 pl-5 leading-relaxed">
