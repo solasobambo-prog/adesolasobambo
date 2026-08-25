@@ -167,6 +167,22 @@ function CaseStudiesPage() {
                 </p>
               </div>
 
+              <figure className="space-y-4">
+                <img
+                  src={churnImage1.url}
+                  alt="Customer churn analysis dashboard page one: KPI cards showing 7,043 total customers, 1,869 churned, a 26.5% churn rate, 18-month average churn tenure and 5,174 retained customers, with bar charts on internet service type, payment method and a monthly charges distribution."
+                  loading="lazy"
+                  className="w-full rounded-lg border border-border/30 bg-brand-contrast"
+                />
+                <img
+                  src={churnImage2.url}
+                  alt="Customer churn analysis dashboard page two: contract-type churn bars, an overall churn pie chart, a monthly charges by churn box plot, a month-to-month contract share pie, a tenure distribution histogram and a correlation heatmap."
+                  loading="lazy"
+                  className="w-full rounded-lg border border-border/30 bg-brand-contrast"
+                />
+              </figure>
+
+
               <div>
                 <h3 className="font-display text-lg font-semibold text-brand-text">What I found</h3>
                 <ul className="mt-3 list-disc space-y-2 pl-5 leading-relaxed">
