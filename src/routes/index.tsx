@@ -35,6 +35,9 @@ function Index() {
             <p className="mt-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
               I clean messy business data, build dashboards that answer real questions, and hand you recommendations you can act on the same week — not a spreadsheet you have to interpret yourself.
             </p>
+            <p className="mt-2 text-base leading-relaxed text-muted-foreground sm:text-lg">
+              Trained through a data analytics internship, now taking on freelance projects.
+            </p>
           </div>
         </section>
 
@@ -64,7 +67,7 @@ function Index() {
                 $2.3M in sales made visible
               </h3>
               <p className="mt-3 text-sm leading-relaxed">
-                Built a fully interactive Power BI dashboard giving management real-time visibility into sales, profit, and regional performance across a 4-year retail dataset.
+                Built an interactive Power BI dashboard analyzing $2.3M in sales across a 4-year training dataset, surfacing regional and profit trends management could act on.
               </p>
             </article>
 
@@ -73,7 +76,7 @@ function Index() {
                 Every number verified
               </h3>
               <p className="mt-3 text-sm leading-relaxed">
-                No AI-invented figures. Every formula, chart, and insight is checked against the source data to guarantee absolute accuracy.
+                No AI-invented figures. Every number, chart, and formula is checked against the source data before it goes into a deliverable. See how on the How I Work page.
               </p>
             </article>
           </div>
