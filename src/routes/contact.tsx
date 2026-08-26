@@ -214,6 +214,7 @@ function ContactPage() {
         {/* Section 4 — Direct contact */}
         <section className="mb-12 text-center sm:mb-16">
           <p className="text-sm text-muted-foreground">Or reach me directly at</p>
+          <p className="text-sm text-muted-foreground">Need to attach a file? Email me directly.</p>
           <a
             href="mailto:solasobambo@gmail.com"
             className="mt-2 inline-block font-display text-lg font-semibold text-brand-accent transition-colors hover:text-foreground"
