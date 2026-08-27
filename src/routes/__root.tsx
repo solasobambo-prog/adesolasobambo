@@ -151,13 +151,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Adesola Sobambo — BI / Data Analyst" },
-      { name: "description", content: "Portfolio of Adesola Sobambo, Business Intelligence and Data Analyst." },
+      { title: "Adesola Sobambo | Business Intelligence / Data Analyst" },
+      { name: "description", content: "Adesola Sobambo turns messy business data into dashboards and reports you can act on. Data Analytics intern building toward freelance work in Excel and Power BI." },
       { name: "author", content: "Adesola Sobambo" },
-      { property: "og:title", content: "Adesola Sobambo — BI / Data Analyst" },
-      { property: "og:description", content: "Portfolio of Adesola Sobambo, Business Intelligence and Data Analyst." },
+      { property: "og:title", content: "Adesola Sobambo | Business Intelligence / Data Analyst" },
+      { property: "og:description", content: "Adesola Sobambo turns messy business data into dashboards and reports you can act on. Data Analytics intern building toward freelance work in Excel and Power BI." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Adesola Sobambo | Business Intelligence / Data Analyst" },
+      { name: "twitter:description", content: "Adesola Sobambo turns messy business data into dashboards and reports you can act on. Data Analytics intern building toward freelance work in Excel and Power BI." },
     ],
     links: [
       {
