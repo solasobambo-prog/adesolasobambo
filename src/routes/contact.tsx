@@ -245,12 +245,9 @@ function ContactPage() {
 
         {/* Section 5 — Closing CTA */}
         <section className="text-center">
-          <a
-            href="mailto:solasobambo@gmail.com"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-4 font-display text-base font-bold text-primary-foreground transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
-          >
+          <span className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-4 font-display text-base font-bold text-primary-foreground transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background">
             Contact me to discuss your data analytics project
-          </a>
+          </span>
         </section>
       </main>
     </div>
