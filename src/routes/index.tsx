@@ -39,7 +39,7 @@ function Index() {
               I turn your tracking spreadsheets into business intelligence you can act on with confidence.
             </h1>
             <p className="mt-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              I clean messy business data, build dashboards that answer real questions, and hand you recommendations you can act on the same week — not a spreadsheet you have to interpret yourself.
+              I clean messy business data, build dashboards that answer real questions, and hand you recommendations you can act on quickly; not a spreadsheet you have to interpret yourself.
             </p>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
               Trained through a data analytics internship, now taking on freelance projects.
@@ -64,7 +64,7 @@ function Index() {
                 26.5% churn diagnosed
               </h3>
               <p className="mt-3 text-sm leading-relaxed">
-                Internship analysis of a telecom dataset identified the exact contract, service, and payment patterns driving customer loss, and delivered 5 recommendations a telecom business could evaluate and test.
+                Internship analysis of a telecom dataset identified the strongest observed churn patterns across contract, service, and payment variables, and delivered 5 recommendations a telecom business could evaluate and test.
               </p>
             </article>
 
