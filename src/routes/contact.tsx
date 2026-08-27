@@ -35,18 +35,31 @@ function ContactPage() {
   const [formData, setFormData] = useState(INITIAL_FORM);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
+  const [emailError, setEmailError] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (name === "email") setEmailError("");
   };
+
+  function isValidEmail(email: string) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(email);
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStatus("loading");
     setMessage("");
+    setEmailError("");
+
+    if (!isValidEmail(formData.email)) {
+      setEmailError("Please enter a valid email address.");
+      return;
+    }
+
+    setStatus("loading");
 
     try {
       const response = await fetch("https://formsubmit.co/ajax/solasobambo@gmail.com", {
@@ -72,7 +85,7 @@ function ContactPage() {
       setFormData(INITIAL_FORM);
       setStatus("success");
       setMessage(
-        "Thanks for reaching out. I'll get back to you within 24–48 hours. Your information is only used to respond to your inquiry."
+        "Thanks for reaching out. I'll get back to you within 2 business days. Your information is only used to respond to your inquiry."
       );
     } catch (error) {
       setStatus("error");
@@ -136,6 +149,14 @@ function ContactPage() {
                   className="mt-2 block w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
                   placeholder="you@example.com"
                 />
+                {emailError && (
+                  <p
+                    className="mt-2 rounded-md border border-red-400/30 bg-red-400/10 p-2 text-sm text-red-900"
+                    role="alert"
+                  >
+                    {emailError}
+                  </p>
+                )}
               </div>
 
               <div>
@@ -213,7 +234,6 @@ function ContactPage() {
 
         {/* Section 4 — Direct contact */}
         <section className="mb-12 text-center sm:mb-16">
-          <p className="text-sm text-muted-foreground">Or reach me directly at</p>
           <p className="text-sm text-muted-foreground">Need to attach a file? Email me directly.</p>
           <a
             href="mailto:solasobambo@gmail.com"
