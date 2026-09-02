@@ -152,6 +152,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "author", content: "Adesola Sobambo" },
+      {
+        name: "google-site-verification",
+        content: "bSC84VVvKWrRvOsUuHOE1am57dHg5uU4SY_HWyz5qdg",
+      },
       { property: "og:site_name", content: "Adesola Sobambo" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
