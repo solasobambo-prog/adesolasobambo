@@ -55,7 +55,6 @@ export function FlyRankBadge() {
           padding: 0,
           border: 0,
           background: "none",
-          color: "inherit",
           fontWeight: 600,
           fontStyle: "normal",
           letterSpacing: "normal",
