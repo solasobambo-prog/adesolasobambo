@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { FlyRankBadge } from "@/components/FlyRankBadge";
+
 export const Route = createFileRoute("/how-i-work")({
   head: () => ({
     meta: [
@@ -97,6 +99,11 @@ function HowIWorkPage() {
             You're not getting a black box. You're getting analysis where a human being has verified every figure, made every judgment call, and can walk you through the reasoning behind every recommendation, with AI used to move faster, never to skip the thinking.
           </p>
         </section>
+
+        {/* Footer badge */}
+        <footer className="pt-8 sm:pt-12">
+          <FlyRankBadge />
+        </footer>
       </main>
     </div>
   );

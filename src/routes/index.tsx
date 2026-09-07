@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
+import { FlyRankBadge } from "@/components/FlyRankBadge";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -100,9 +102,12 @@ function Index() {
           </div>
         </section>
 
-
-
-
+        {/* Section 6 — Footer badge */}
+        <footer className="section-padding">
+          <div className="mx-auto max-w-5xl">
+            <FlyRankBadge />
+          </div>
+        </footer>
       </main>
     </div>
   );
