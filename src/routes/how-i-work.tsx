@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { FlyRankBadge } from "@/components/FlyRankBadge";
+
 export const Route = createFileRoute("/how-i-work")({
   head: () => ({
     meta: [
